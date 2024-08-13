@@ -29,6 +29,7 @@ class ConversationController extends Controller
         ]);
 
         $userMessage = Conversation::create([
+            'user_id' => '1',
             'message' => $request->message,
             'sender' => 'user',
         ]);
@@ -36,6 +37,7 @@ class ConversationController extends Controller
         $botResponse = $this->generateBotResponse($request->message);
 
         $assistantMessage = Conversation::create([
+            'user_id' => '1',
             'message' => $botResponse,
             'sender' => 'assistant',
         ]);
