@@ -9,10 +9,15 @@ class Conversation extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id'];
+    protected $fillable = ['user_id', 'title'];
+
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class);
     }
 }
